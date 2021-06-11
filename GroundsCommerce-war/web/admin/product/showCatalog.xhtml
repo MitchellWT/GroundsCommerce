@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Show All Products</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h1>Show All Products</h1>
+        
+        <c:forEach items="#{allProductManagedBean.catalog}" var="product">
+            
+            <div>
+                <h:panelGrid columns="2">
+                    <h:outputText style="padding: 0 10px;" value="Product ID"/>
+                    <h:outputText value="#{product.id}"/>
+                    
+                    <h:outputText style="padding: 0 10px;" value="Name"/>
+                    <h:outputText value="#{product.name}"/>
+                    
+                    <h:outputText style="padding: 0 10px;" value="Image"/>
+                    <h:graphicImage url="#{product.image}" width="100"/>
+                    
+                    <h:outputText style="padding: 0 10px;" value="Description"/>
+                    <h:outputText value="#{product.description}"/>
+                    
+                    <h:outputText style="padding: 0 10px;" value="Price"/>
+                    <h:outputText value="#{product.price}"/>
+                </h:panelGrid>
+                    
+                <h:form>
+                    <h:commandButton id="submit" value="Delete Product"
+                                     action="#{allProductManagedBean.deleteProduct(product.id)}"/>
+                </h:form>
+            </div>
+            
+        </c:forEach>
+    </h:body>
+</html>

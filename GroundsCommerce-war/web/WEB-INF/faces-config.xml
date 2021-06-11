@@ -1,0 +1,486 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    <!--CREATE ACCOUNT PATHS-->
+    <!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+    
+    <navigation-rule>
+        <from-view-id>/create.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{customerManagedBean.addCustomer}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/addSuccess.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{customerManagedBean.addCustomer}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/addFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!--ADMIN PATHS-->
+    <!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+    
+    <!--INDEX SECTION-->
+    <!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+    
+    <navigation-rule>
+        <from-view-id>/admin/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{allCustomerOrderManagedBean.setData}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/admin/order/showAll.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{allCustomerOrderManagedBean.setData}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/admin/order/locateFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!--CUSTOMER SECTION-->
+    <!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+    
+    <navigation-rule>
+        <from-view-id>/admin/customer/create.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{customerManagedBean.addCustomer}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/admin/customer/addSuccess.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{customerManagedBean.addCustomer}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/admin/customer/addFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/admin/customer/changeRequest.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{customerManagedBean.setData}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/admin/customer/change.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{customerManagedBean.setData}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/admin/customer/locateFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/admin/customer/change.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{customerManagedBean.updateCustomer}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/admin/customer/changeSuccess.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{customerManagedBean.updateCustomer}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/admin/customer/locateFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/admin/customer/changePassword.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{customerManagedBean.updatePassword}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/admin/customer/passwordSuccess.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{customerManagedBean.updatePassword}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/admin/customer/locateFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/admin/customer/showRequest.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{customerManagedBean.showCustomer}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/admin/customer/show.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{customerManagedBean.showCustomer}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/admin/customer/locateFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/admin/customer/deleteRequest.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{customerManagedBean.deleteCustomer}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/admin/customer/deleteSuccess.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{customerManagedBean.deleteCustomer}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/admin/customer/locateFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!--ORDER SECTION-->
+    <!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+    
+    <navigation-rule>
+        <from-view-id>/admin/order/showAll.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{allCustomerOrderManagedBean.deleteOrder(order.id)}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/admin/order/deleteSuccess.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{allCustomerOrderManagedBean.deleteOrder(order.id)}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/admin/order/locateFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/admin/order/show.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{allCustomerOrderManagedBean.deleteOrder(order.id)}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/admin/order/deleteSuccess.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{allCustomerOrderManagedBean.deleteOrder(order.id)}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/admin/order/locateFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/admin/order/showRequest.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{allCustomerOrderManagedBean.setData4Customer}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/admin/order/show.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{allCustomerOrderManagedBean.setData4Customer}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/admin/order/locateFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!--PRODUCT SECTION-->
+    <!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+    
+    <navigation-rule>
+        <from-view-id>/admin/product/create.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{productManagedBean.addProduct}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/admin/product/addSuccess.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{productManagedBean.addProduct}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/admin/product/addFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/admin/product/changeRequest.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{productManagedBean.setData}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/admin/product/change.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{productManagedBean.setData}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/admin/product/locateFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/admin/product/change.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{productManagedBean.updateProduct}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/admin/product/changeSuccess.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{productManagedBean.updateProduct}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/admin/product/locateFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/admin/product/showRequest.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{allProductManagedBean.setData}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/admin/product/showCatalog.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{allProductManagedBean.setData}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/admin/product/locateFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/admin/product/showRequest.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{productManagedBean.showProduct}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/admin/product/show.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{productManagedBean.showProduct}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/admin/product/locateFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/admin/product/deleteRequest.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{productManagedBean.deleteProduct}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/admin/product/deleteSuccess.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{productManagedBean.deleteProduct}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/admin/product/locateFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/admin/product/showCatalog.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{allProductManagedBean.deleteProduct(product.id)}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/admin/product/deleteSuccess.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{allProductManagedBean.deleteProduct(product.id)}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/admin/product/locateFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!--CUSTOMER PATHS-->
+    <!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+    
+    <!--INDEX SECTION-->
+    <!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+    
+    <navigation-rule>
+        <from-view-id>/user/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{allProductManagedBean.setData}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/user/store/showCatalog.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{allProductManagedBean.setData}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/user/store/locateFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/user/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{customerManagedBean.setData(loginManagedBean.loginName)}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/user/customer/change.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{customerManagedBean.setData(loginManagedBean.loginName)}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/user/customer/locateFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/user/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{customerManagedBean.setDataView(loginManagedBean.loginName)}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/user/customer/show.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{customerManagedBean.setDataView(loginManagedBean.loginName)}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/user/customer/locateFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/user/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{allCustomerOrderManagedBean.setData4Customer(loginManagedBean.loginName)}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/user/order/show.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{allCustomerOrderManagedBean.setData4Customer(loginManagedBean.loginName)}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/user/order/locateFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!--STORE SECTION-->
+    <!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+    
+    <navigation-rule>
+        <from-view-id>/user/store/showCatalog.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{shoppingCartManagedBean.addToCart(product.id)}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/user/store/cartAddSuccess.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{shoppingCartManagedBean.addToCart(product.id)}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/user/store/locateFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/user/store/viewCart.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{allProductManagedBean.setData}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/user/store/showCatalog.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{allProductManagedBean.setData}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/user/store/locateFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/user/store/viewCart.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{shoppingCartManagedBean.checkOut}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/user/store/checkoutSuccess.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{shoppingCartManagedBean.checkOut}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/user/store/locateFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/user/store/showCatalog.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{shoppingCartManagedBean.getCustomerData(loginManagedBean.loginName)}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/user/store/viewCart.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{shoppingCartManagedBean.getCustomerData(loginManagedBean.loginName)}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/user/store/locateFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/user/store/cartAddSuccess.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{allProductManagedBean.setData}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/user/store/showCatalog.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{allProductManagedBean.setData}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/user/store/locateFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/user/store/checkoutSuccess.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{allProductManagedBean.setData}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/user/store/showCatalog.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{allProductManagedBean.setData}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/user/store/locateFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!--CUSTOMER SECTION-->
+    <!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+    
+    <navigation-rule>
+        <from-view-id>/user/customer/change.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{customerManagedBean.updateCustomer}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/user/customer/changeSuccess.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{customerManagedBean.updateCustomer}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/user/customer/locateFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/user/customer/changePassword.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{customerManagedBean.updatePassword(loginManagedBean.loginName)}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/user/customer/passwordSuccess.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{customerManagedBean.updatePassword(loginManagedBean.loginName)}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/user/customer/locateFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+</faces-config>

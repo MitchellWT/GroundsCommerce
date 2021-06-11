@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Authorization Failure</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h1>Authorization Failure</h1>
+        
+        <p>Unable to login as admin, do not retry If you are a customer!</p>
+        
+        <h:form>
+            <h:commandButton value="Login" action="#{loginManagedBean.logoutResult}"/>
+        </h:form>
+        
+        <br/>
+    </h:body>
+</html>
+

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Show All Orders</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h1>Show All Orders</h1>
+
+        <c:forEach items="#{allCustomerOrderManagedBean.orders}" var="order">
+
+            <div>
+                <h:panelGrid columns="2" >
+                    <h:outputText value="Order ID"/>
+                    <h:outputText style="padding: 0 10px;" value="#{order.id}"/>
+
+                    <h:outputText value="Customer Email"/>
+                    <h:outputText style="padding: 0 10px;" value="#{order.customer_email}"/>
+                </h:panelGrid>
+
+                <div>
+                    <table>
+                        <tr>
+                            <th>Item</th>
+                            <th style="padding: 0 10px;">Quantity</th>
+                        </tr>
+
+                        <c:forEach items="#{allCustomerOrderManagedBean.formatOrderItems(order.order_items)}" var="entry">
+                            <tr>
+                                <td>
+                                    <h:outputText value="#{allProductManagedBean.getProduct(entry.key).getName()}"/>
+                                </td>
+
+                                <td>
+                                    <h:outputText value="#{entry.value}" style="padding: 0 10px;"/>
+                                </td>
+                            </tr>
+                        </c:forEach> 
+                    </table>
+                </div>
+                
+                <h:panelGrid columns="2">
+                    <h:outputText value="Delivery Address"/>
+                    <h:outputText style="padding: 0 10px;" value="#{order.delivery_address}"/>
+                    
+                    <h:outputText value="Delivery Postcode"/>
+                    <h:outputText style="padding: 0 10px;" value="#{order.delivery_postcode}"/>
+                    
+                    <h:outputText value="Delivery State"/>
+                    <h:outputText style="padding: 0 10px;" value="#{order.delievry_state}"/>
+                    
+                    <h:outputText value="Delivery Country"/>
+                    <h:outputText style="padding: 0 10px;" value="#{order.delivery_country}"/>
+                    
+                    <h:outputText value="Payment Method"/>
+                    <h:outputText style="padding: 0 10px;" value="#{order.payment_method}"/>
+                </h:panelGrid>
+            </div>
+
+        </c:forEach>
+    </h:body>
+</html>

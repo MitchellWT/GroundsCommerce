@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Delete Product</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h1>Delete Product</h1>
+        
+        <h:form>
+            <h:panelGrid columns="2">
+                
+                <h:outputLabel value="ID Number"/>
+                <h:inputText title="id" id="id" required="true"
+                             value="#{productManagedBean.id}"/>
+                
+            </h:panelGrid>
+            
+            <h:commandButton id="submit" value="Submit" 
+                             action="#{productManagedBean.deleteProduct}"/>
+        </h:form>
+    </h:body>
+</html>

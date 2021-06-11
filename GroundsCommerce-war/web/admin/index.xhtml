@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Admin Menu</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h1>Admin Menu</h1>
+        
+        <h2>Accounts</h2>
+        
+        <ul style="list-style: none;">
+            <li>
+                <h:outputLink value="customer/create.xhtml">Create Account</h:outputLink>
+            </li>
+            
+            <li>
+                <h:outputLink value="customer/changeRequest.xhtml">Update Account</h:outputLink>
+            </li>
+            
+            <li>
+                <h:outputLink value="customer/changePassword.xhtml">Update Password</h:outputLink>
+            </li>
+            
+            <li>
+                <h:outputLink value="customer/showRequest.xhtml">Read Account</h:outputLink>
+            </li>
+            
+            <li>
+                <h:outputLink value="customer/deleteRequest.xhtml">Delete Account</h:outputLink>
+            </li>
+        </ul>
+        
+        <h2>Products</h2>
+        
+        <ul style="list-style: none;">
+            <li>
+                <h:outputLink value="product/create.xhtml">Create Product</h:outputLink>
+            </li>
+            
+            <li>
+                <h:outputLink value="product/changeRequest.xhtml">Update Product</h:outputLink>
+            </li>
+            
+            <li>
+                <h:outputLink value="product/showRequest.xhtml">Read Product</h:outputLink>
+            </li>
+            
+            <li>
+                <h:outputLink value="product/deleteRequest.xhtml">Delete Product</h:outputLink>
+            </li>
+        </ul>
+        
+        <h2>Orders</h2>
+        
+        <ul style="list-style: none;">
+            <li>
+                <h:form>
+                    <h:commandLink id="submit" value="Read All Orders"
+                                   action="#{allCustomerOrderManagedBean.setData}"/>
+                </h:form>
+            </li>
+            
+            <li>
+                <h:outputLink value="order/showRequest.xhtml">Read All Orders From Email</h:outputLink>
+            </li>
+        </ul>
+    </h:body>
+</html>

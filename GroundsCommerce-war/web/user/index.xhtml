@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Customer Menu</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h1>Customer Menu</h1>
+        
+        <h:form>
+            <h:commandLink id="submit" value="Catalog"
+                           action="#{allProductManagedBean.setData}"/>
+        </h:form>
+        
+        <h2>Account</h2>
+        
+        <ul style="list-style: none;">         
+            <li>
+                <h:form>
+                    <h:commandLink id="submit" value="Update Account"
+                                   action="#{customerManagedBean.setData(loginManagedBean.loginName)}"/>
+                </h:form>
+            </li>
+            
+            <li>
+                <h:outputLink value="customer/changePassword.xhtml">Update Password</h:outputLink>
+            </li>
+            
+            <li>
+                <h:form>
+                    <h:commandLink id="submit" value="View Account"
+                                   action="#{customerManagedBean.setDataView(loginManagedBean.loginName)}"/>
+                </h:form>
+            </li>
+        </ul>
+        
+        <h2>Orders</h2>
+        
+        <ul style="list-style: none;">
+            <li>
+                <h:form>
+                    <h:commandLink id="submit" value="View My Orders"
+                                   action="#{allCustomerOrderManagedBean.setData4Customer(loginManagedBean.loginName)}"/>
+                </h:form>
+            </li>
+        </ul>
+    </h:body>
+</html>

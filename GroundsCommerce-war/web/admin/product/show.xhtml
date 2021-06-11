@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Show Product</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h1>Show Product</h1>
+        
+        <h:panelGrid columns="2">
+            
+            <h:outputText value="ID Number"/>
+            <h:outputText value="#{productManagedBean.id}"/>
+            
+            <h:outputText value="Name"/>
+            <h:outputText value="#{productManagedBean.name}"/>
+            
+            <h:outputText value="Description"/>
+            <h:outputText value="#{productManagedBean.description}"/>
+            
+            <h:outputText value="Image"/>
+            <h:graphicImage url="#{productManagedBean.image}" width="100"/>
+            
+            <h:outputText value="Price"/>
+            <h:outputText value="#{productManagedBean.price}"/>
+            
+            <h:outputLink value="/GroundsCommerce-war/faces/admin/index.xhtml">Admin Menu</h:outputLink>
+        </h:panelGrid>
+    </h:body>
+</html>

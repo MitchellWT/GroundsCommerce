@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Create Product</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h1>Create Product</h1>
+        
+        <h:form>
+            <h:panelGrid columns="2">
+                
+                <h:outputLabel value="Name"/>
+                <h:inputText title="name" id="name" required="true"
+                            value="#{productManagedBean.name}"/>
+            
+                <h:outputLabel value="Description"/>
+                <h:inputText title="description" id="description" required="true"
+                               value="#{productManagedBean.description}"/>
+
+                <h:outputLabel value="Image"/>
+                <h:inputText title="image" id="image" required="true"
+                               value="#{productManagedBean.image}"/>
+
+                <h:outputLabel value="Price"/>
+                <h:inputText title="price" id="price" required="true"
+                            value="#{productManagedBean.price}"/>
+            </h:panelGrid>
+            
+            <h:commandButton id="submit" value="Submit" 
+                action="#{productManagedBean.addProduct}"/>
+        </h:form>
+    </h:body>
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Show Catalog</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h1>Show Catalog</h1>
+        
+        <h:form>
+            <h:commandLink id="submit" value="View Cart"
+                           action="#{shoppingCartManagedBean.getCustomerData(loginManagedBean.loginName)}"/>
+        </h:form>
+        
+        <c:forEach items="#{allProductManagedBean.catalog}" var="product">
+            
+            <div>
+                <div>
+                    <h:outputText value="#{product.name}"/>
+                </div>
+                    
+                <div>
+                    <h:graphicImage url="#{product.image}" width="100"/>
+                </div>
+                    
+                <div>
+                    <h:outputText value="#{product.description}"/>
+                </div>
+                
+                <div>
+                    <h:outputText value="#{product.price}"/>
+                </div>
+                    
+                <h:form>
+                    <h:commandButton id="submit" value="Add to Cart"
+                                     action="#{shoppingCartManagedBean.addToCart(product.id)}"/>
+                </h:form>
+            </div>
+            
+        </c:forEach>
+    </h:body>
+</html>

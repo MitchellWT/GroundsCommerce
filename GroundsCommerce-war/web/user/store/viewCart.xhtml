@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Your Cart</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h1>Your Cart</h1>
+
+        <h:form>
+            <h:commandLink id="submit" value="Catalog"
+                           action="#{allProductManagedBean.setData}"/>
+        </h:form>
+
+        <table>
+            <tr>
+                <th>Item</th>
+                <th style="padding: 0 10px;">Quantity</th>
+                <th>Single Item Price</th>
+            </tr>
+
+            <c:forEach items="#{shoppingCartManagedBean.cart}" var="entry">
+                <tr>
+                    <td>
+                        <h:outputText value="#{allProductManagedBean.getProduct(entry.key).getName()}"/>
+                    </td>
+
+                    <td>
+                        <h:outputText value="#{entry.value}" style="padding: 0 10px;"/>
+                    </td>
+
+                    <td>
+                        <h:outputText value="#{allProductManagedBean.getProduct(entry.key).getPrice()}"/>
+                    </td>
+                </tr>
+            </c:forEach>
+
+            <tr>
+                <td style="padding: 25px 0;">Total:</td>
+                <td></td>
+                <td><h:outputText value="#{shoppingCartManagedBean.total}"/></td>
+            </tr>
+        </table>
+
+        <h2>Checkout</h2>
+
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Email"/>
+                <h:inputText title="email" id="email" required="true"
+                             value="#{shoppingCartManagedBean.email}"/>
+
+                <h:outputLabel value="Delivery Address"/>
+                <h:inputText title="delivery_address" id="delivery_address" required="true"
+                             value="#{shoppingCartManagedBean.delivery_address}"/>
+
+                <h:outputLabel value="Delivery Postcode"/>
+                <h:inputText title="delivery_postcode" id="delivery_postcode" required="true"
+                             value="#{shoppingCartManagedBean.delivery_postcode}"/>
+
+                <h:outputLabel value="Delivery State"/>
+                <h:inputText title="delivery_state" id="delivery_state" required="true"
+                             value="#{shoppingCartManagedBean.delivery_state}"/>
+
+                <h:outputLabel value="Delivery Country"/>
+                <h:inputText title="delivery_country" id="delivery_country" required="true"
+                             value="#{shoppingCartManagedBean.delivery_country}"/>
+
+                <h:outputLabel value="Payment Method"/>
+                <h:selectOneListbox value="#{shoppingCartManagedBean.payment_method}">
+                    <f:selectItem itemValue="1" itemLabel="Payment on Delivery"/>
+                </h:selectOneListbox>
+            </h:panelGrid>
+
+            <h:commandLink id="submit" value="Checkout"
+                           action="#{shoppingCartManagedBean.checkOut}"/>
+        </h:form>
+    </h:body>
+</html>
